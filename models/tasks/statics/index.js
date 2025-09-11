@@ -1,9 +1,7 @@
 const create = require('./create')
 const edit = require('./edit')
-const sucess = require('./sucess')
 
 module.exports = {
   create,
-  edit,
-  sucess
+  edit
 }

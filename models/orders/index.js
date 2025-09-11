@@ -30,9 +30,16 @@ const ordersSchema = new Schema({
   },
   items: {
     type: Array
+  },
+  taskIdArray: {
+    type: Array
+  },
+  status: {
+    type: Boolean
   }
 })
 
 ordersSchema.statics.create = statics.create
 ordersSchema.statics.edit = statics.edit
+ordersSchema.statics.sucess = statics.sucess
 module.exports = mongoose.model('Orders', ordersSchema)

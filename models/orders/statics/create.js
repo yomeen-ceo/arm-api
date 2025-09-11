@@ -7,11 +7,16 @@ module.exports = async function (payload) {
   console.log(
     order
   )
+  const taskIdArray = []
   // 呼叫手臂作業
   try {
-    await axios.post('http://192.168.1.105:3333/api/robot/start-scene',{
-      sceneId: '1002'
+    const res = await axios.post('http://192.168.18.112:3333/api/robot/start-scene',{
+      sceneId: '10016'
     })
+    console.log('===========res.data')
+    console.log(res.data)
+    const taskId = res.data.taskId
+    taskIdArray.push(taskId)
   } catch (e) {
     console.log('=====錯誤內容：')
     console.log(e)
@@ -22,7 +27,9 @@ module.exports = async function (payload) {
     isDeleted: false,
     totalResult: order.totalResult,
     paymentAmount: order.paymentAmount,
-    items: order.newItems
+    items: order.newItems,
+    taskIdArray,
+    status: false
   })
   const newOrder = await orderInstance.save()
   return newOrder
