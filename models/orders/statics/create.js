@@ -10,7 +10,7 @@ module.exports = async function (payload) {
   const taskIdArray = []
   // 呼叫手臂作業
   try {
-    const res = await axios.post('http://192.168.18.112:3333/api/robot/start-scene',{
+    const res = await axios.post('http://localhost:3333/api/robot/start-scene',{
       sceneId: '10016'
     })
     console.log('===========res.data')

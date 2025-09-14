@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
     .where('status').equals(false)
     .exec()
   try {
-    const response = await axios.get('http://192.168.18.112:3333/api/robot/task-list')
+    const response = await axios.get('http://localhost:3333/api/robot/task-list')
     const list = response.data.list
     const waitList = []
     for (let i = 0, length = list.length; i < length; i = i + 1) {
