@@ -6,7 +6,8 @@ module.exports = async (req, res) => {
     taste = [],
     ingredients = [],
     friedTime,
-    kind
+    kind,
+    scenarioId
   } = req.body
   console.log(
     productName,
@@ -14,7 +15,8 @@ module.exports = async (req, res) => {
     taste,
     ingredients,
     friedTime,
-    kind
+    kind,
+    scenarioId
   )
   const product = await productsModel.create({
     productName,
@@ -22,7 +24,8 @@ module.exports = async (req, res) => {
     taste,
     ingredients,
     friedTime,
-    kind
+    kind,
+    scenarioId
   })
   res.json({
     product

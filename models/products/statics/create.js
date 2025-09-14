@@ -6,7 +6,8 @@ module.exports = async function (payload) {
     taste,
     ingredients,
     friedTime,
-    kind
+    kind,
+    scenarioId
   } = payload
   const productInstance = new this({
     creationTime: new Date().getTime(),
@@ -16,7 +17,8 @@ module.exports = async function (payload) {
     taste,
     ingredients,
     friedTime,
-    kind
+    kind,
+    scenarioId
   })
   const product = await productInstance.save()
   return product

@@ -5,7 +5,8 @@ module.exports = async function (payload) {
     price,
     ingredientsId,
     friedTime,
-    kind
+    kind,
+    scenarioId
   } = payload
   const oldIngredients = await this.findOne({ _id: ingredientsId })
   if (ingredientsName) {
@@ -19,6 +20,9 @@ module.exports = async function (payload) {
   }
   if (friedTime === 0 || friedTime) {
     oldIngredients.friedTime = friedTime
+  }
+  if (scenarioId) {
+    oldIngredients.scenarioId = scenarioId
   }
   const ingredients = await oldIngredients.save()
   return ingredients
