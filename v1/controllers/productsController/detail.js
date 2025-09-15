@@ -1,6 +1,8 @@
 const productsModel = require('../../../models/products')
 module.exports = async (req, res) => {
   const { productId } = req.params
+  console.log('==========productId')
+  console.log(productId)
   try {
     const product = await productsModel
       .findOne()

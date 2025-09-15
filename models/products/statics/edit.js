@@ -1,29 +1,47 @@
 const axios = require('axios')
 module.exports = async function (payload) {
   const {
-    ingredientsName,
+    productId,
+    productName,
     price,
-    ingredientsId,
+    taste,
+    ingredients,
     friedTime,
     kind,
     scenarioId
   } = payload
-  const oldIngredients = await this.findOne({ _id: ingredientsId })
-  if (ingredientsName) {
-    oldIngredients.ingredientsName = ingredientsName
+  console.log(
+    productId,
+    productName,
+    price,
+    taste,
+    ingredients,
+    friedTime,
+    kind,
+    scenarioId
+  )
+  const oldProducts = await this.findOne({ _id: productId })
+  if (productName) {
+    oldProducts.productName = productName
   }
   if (kind) {
-    oldIngredients.kind = kind
+    oldProducts.kind = kind
   }
   if (price === 0 || price) {
-    oldIngredients.price = price
+    oldProducts.price = price
   }
   if (friedTime === 0 || friedTime) {
-    oldIngredients.friedTime = friedTime
+    oldProducts.friedTime = friedTime
   }
   if (scenarioId) {
-    oldIngredients.scenarioId = scenarioId
+    oldProducts.scenarioId = scenarioId
   }
-  const ingredients = await oldIngredients.save()
-  return ingredients
+  if (taste) {
+    oldProducts.taste = taste
+  }
+  if (ingredients) {
+    oldProducts.ingredients = ingredients
+  }
+  const product = await oldProducts.save()
+  return product
 }

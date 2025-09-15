@@ -41,7 +41,7 @@ const productsSchema = new Schema({
     type: String
   },
   // 手臂場景ID
-  ScenarioId: {
+  scenarioId: {
     type: Number
   }
 })
