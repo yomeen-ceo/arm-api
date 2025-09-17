@@ -6,7 +6,9 @@ module.exports = async function (payload) {
   console.log(
     taskId
   )
-  const orderInstance = await this.findOne({ "taskIdArray.0": taskId })
+  const orderInstance = await this.findOne({
+    $expr: { $eq: [ { $arrayElemAt: ["$taskIdArray", -1] }, taskId ] }
+  })
   orderInstance.status = true
   await orderInstance.save()
   const orders = await this.find()
